@@ -38,6 +38,9 @@
             this.activatedImageBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.filterIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sizeOfImages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.activatedImageBox1)).BeginInit();
@@ -68,7 +71,7 @@
             // 
             // filterIndex
             // 
-            this.filterIndex.Location = new System.Drawing.Point(721, 13);
+            this.filterIndex.Location = new System.Drawing.Point(824, 13);
             this.filterIndex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.filterIndex.Name = "filterIndex";
             this.filterIndex.Size = new System.Drawing.Size(63, 23);
@@ -79,7 +82,7 @@
             // 
             this.layerList.FormattingEnabled = true;
             this.layerList.ItemHeight = 15;
-            this.layerList.Location = new System.Drawing.Point(443, 13);
+            this.layerList.Location = new System.Drawing.Point(546, 13);
             this.layerList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.layerList.Name = "layerList";
             this.layerList.Size = new System.Drawing.Size(178, 109);
@@ -88,7 +91,7 @@
             // 
             // sizeOfImages
             // 
-            this.sizeOfImages.Location = new System.Drawing.Point(721, 44);
+            this.sizeOfImages.Location = new System.Drawing.Point(824, 44);
             this.sizeOfImages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sizeOfImages.Name = "sizeOfImages";
             this.sizeOfImages.Size = new System.Drawing.Size(47, 23);
@@ -101,7 +104,7 @@
             // 
             // GoButton
             // 
-            this.GoButton.Location = new System.Drawing.Point(362, 74);
+            this.GoButton.Location = new System.Drawing.Point(394, 74);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(75, 23);
             this.GoButton.TabIndex = 5;
@@ -134,7 +137,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(624, 16);
+            this.label1.Location = new System.Drawing.Point(727, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 15);
             this.label1.TabIndex = 9;
@@ -143,17 +146,43 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(624, 47);
+            this.label2.Location = new System.Drawing.Point(727, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 15);
             this.label2.TabIndex = 10;
             this.label2.Text = "images per filter";
+            // 
+            // button1
+            // 
+            this.button1.AutoSize = true;
+            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button1.Location = new System.Drawing.Point(443, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(26, 25);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.AutoSize = true;
+            this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button2.Location = new System.Drawing.Point(443, 43);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(26, 25);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "...";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(899, 535);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.activatedImageBox2);
@@ -189,6 +218,9 @@
         private System.Windows.Forms.PictureBox activatedImageBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
 

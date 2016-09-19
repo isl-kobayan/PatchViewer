@@ -113,13 +113,10 @@ namespace FilterVizChecker
             int maxheight = 0;
             for(int i=0; i<size; i++)
             {
-                string filename = path + Path.DirectorySeparatorChar + layer + Path.DirectorySeparatorChar
-                    + index.ToString("0000") + "_" + i.ToString("00") + ".png";
+                string filename = Path.Combine(path, layer, index.ToString("0000") + "_" + i.ToString("00") + ".png");
                 images[i] = new Mat(filename);
                 sumwidth += images[i].Cols;
                 if (maxheight < images[i].Rows) maxheight = images[i].Rows;
-                //Cv2.NamedWindow("b" + i);
-                //Cv2.ImShow("b" + i, images[i]);
             }
             allImage = new Mat(maxheight, sumwidth, MatType.CV_8UC3);
             int x = 0;
@@ -146,27 +143,39 @@ namespace FilterVizChecker
 
         private void filterIndex_ValueChanged(object sender, EventArgs e)
         {
-            //Cv2.NamedWindow("a", WindowMode.AutoSize | WindowMode.KeepRatio);
-            //Cv2.ImShow("a", GetActivatedImages(folder1.Text, layerList.SelectedItem.ToString(),
-            //    (int)filterIndex.Value, (int)sizeOfImages.Value));
             UpdateImage();
         }
 
         private void layerList_SelectedIndexChanged(object sender, EventArgs e)
         {
             filterIndex.Value = 0;
-            //string[] filters = Directory.GetFiles(folder1.Text + Path.DirectorySeparatorChar
-            //    + layerList.SelectedItem.ToString(), "*_00.png", SearchOption.TopDirectoryOnly);
-            //filterIndex.Maximum = filters.Length - 1;
-            int nOfFilters = Directory.GetFiles(folder1.Text + Path.DirectorySeparatorChar
-                + layerList.SelectedItem.ToString(), "*_00.png", SearchOption.TopDirectoryOnly).Count();
+            int nOfFilters = Directory.GetFiles(
+                Path.Combine(folder1.Text, layerList.SelectedItem.ToString()),
+                "*_00.png", SearchOption.TopDirectoryOnly).Count();
             filterIndex.Maximum = nOfFilters;
 
-            int imagesPerFilter = Directory.GetFiles(folder1.Text + Path.DirectorySeparatorChar
-                + layerList.SelectedItem.ToString(), "0000_*.png", SearchOption.TopDirectoryOnly).Count();
+            int imagesPerFilter = Directory.GetFiles(
+                Path.Combine(folder1.Text, layerList.SelectedItem.ToString()),
+                "0000_*.png", SearchOption.TopDirectoryOnly).Count();
             sizeOfImages.Maximum = imagesPerFilter;
 
             UpdateImage();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                folder1.Text = folderBrowserDialog.SelectedPath;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                folder2.Text = folderBrowserDialog.SelectedPath;
+            }
         }
     }
 }
